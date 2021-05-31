@@ -11,7 +11,7 @@ node
 			def cloneCommand = 'git clone https://user:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git'			
 			println("Clone Command = " + cloneCommand)
 			sh cloneCommand
-			//sh 'git status' //this is just for debug
+			sh 'git status /var/lib/jenkins/workspace/mbsa/mbsa' //this is just for debug
 			sh 'pwd'
 		}
    	}
