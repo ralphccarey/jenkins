@@ -13,7 +13,7 @@ node
 			def cloneCommand = 'git clone https://user:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git /var/lib/jenkins/workspace/mbsa'						
 			def checkOutCommand = 'git checkout https://user:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git /var/lib/jenkins/workspace/mbsa'						
 			//sh "echo $cloneCommand"
-			sh "if [ -d /var/lib/jenkins/workspace/mbsa/.git ];then  $checkOutCommand';else $cloneCommand;fi"
+			sh "if [ -d /var/lib/jenkins/workspace/mbsa/.git ];then  $checkOutCommand;else $cloneCommand;fi"
 			//sh cloneCommand
 			sh 'git status' //this is just for debug			
 		}
