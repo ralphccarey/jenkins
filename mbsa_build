@@ -12,7 +12,7 @@ node
 			println("Clone Command = " + cloneCommand)
 			sh cloneCommand
 			sh 'cd mbsa'
-			sh 'git status /var/lib/jenkins/workspace/mbsa/mbsa' //this is just for debug
+			sh 'git status' //this is just for debug
 			sh 'pwd'
 		}
    	}
