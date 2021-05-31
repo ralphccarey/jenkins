@@ -36,13 +36,11 @@ node
 		{
 			echo 'Checking in new files'
 			sh 'git status' //this is just for debug
-			sh 'git add data1.txt'
-			sh 'git add data2.txt'
-			sh 'git commit -m \"Added data1 and data2\"'
-			sh 'git status'
+			sh 'git commit -a -m \"Added data1 and data2\"'			
 			def pushCommand = 'git push https://x:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git'					
 			println("Push Command = " + pushCommand)
 			sh pushCommand			
+			sh 'git status'
 		}
     	}
 }
