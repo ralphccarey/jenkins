@@ -7,7 +7,7 @@ node
 		withCredentials([usernamePassword(credentialsId: 'GIT_LAB_FULL', usernameVariable: 'USERNAME', passwordVariable: 'API_TOKEN')])
 		{
 			//git branch:'main' url: "https://$API_TOKEN@gitlab.com/sagecarey/test.git"
-			sh 'git branch url:\'https://$API_TOKEN@gitlab.com/ralphccarey/mbsa.git\''
+			sh 'git branch url:\'https://$API_TOKEN@gitlab.com/sagecarey/mbsa.git\''
 			
 			//def cloneCommand = 'git clone https://user:$API_TOKEN@gitlab.com/sagecarey/test.git'			
 			//println("Push Command = " + cloneCommand)
