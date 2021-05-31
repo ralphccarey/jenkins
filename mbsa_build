@@ -1,1 +1,16 @@
 
+node 
+{ 
+   	stage('Clone Repository') 
+	{        
+		echo 'Cloning repository'
+   	}
+   	stage('Pre-Build') 
+	{        
+		echo 'Entering Pre-Build'
+    }
+	stage('Check-in')
+	{
+        echo 'Entering Check-in'	
+    }
+}
