@@ -12,10 +12,7 @@ node
 			//https://gitlab.com/ralphccarey/mbsa.git
 			def cloneCommand = 'git clone https://user:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git /var/lib/jenkins/workspace/mbsa'			
 			println("Clone Command = " + cloneCommand)
-			sh "if [ -d /var/lib/jenkins/workspace/mbsa/.git ];
-			then  echo \'found\';
-			else cloneCommand;
-			fi"
+			sh "if [ -d /var/lib/jenkins/workspace/mbsa/.git ];then  echo \'found\';else cloneCommand;fi"
 			//sh cloneCommand
 			sh 'git status' //this is just for debug			
 		}
