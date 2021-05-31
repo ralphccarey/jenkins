@@ -3,7 +3,7 @@ node
 { 
    	stage('Clone Repository') 
 	{        
-		sh 'git branch -D main'
+		sh 'git branch -D mbsa.git'
 		withCredentials([usernamePassword(credentialsId: 'GIT_LAB_FULL', usernameVariable: 'USERNAME', passwordVariable: 'API_TOKEN')])
 		{
 			//git branch:'main' url: "https://$API_TOKEN@gitlab.com/sagecarey/test.git"
