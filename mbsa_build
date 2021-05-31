@@ -33,14 +33,14 @@ node
 	stage('Check-in')
 	{
         	withCredentials([usernamePassword(credentialsId: 'GIT_LAB_FULL', usernameVariable: 'USERNAME', passwordVariable: 'API_TOKEN')])
-		{
-			echo 'Checking in new files'
-			sh 'git status' //this is just for debug
-			sh 'git commit -a -m \"Added data1 and data2\"'			
+		{			
 			def pushCommand = 'git push https://x:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git'					
+			echo 'Checking in new files'
+			//sh 'git status' //this is just for debug
 			println("Push Command = " + pushCommand)
+			sh 'git commit -a -m \"Added data1 and data2\"'									
 			sh pushCommand			
-			sh 'git status'
+			//sh 'git status'
 		}
     	}
 }
