@@ -3,7 +3,7 @@ node
 { 
    	stage('Clone Repository') 
 	{        
-		sh 'sudo -rm -r mbsa'
+		sh 'sudo rm -r mbsa'
 		echo 'Getting Branches'
 		withCredentials([usernamePassword(credentialsId: 'GIT_LAB_FULL', usernameVariable: 'USERNAME', passwordVariable: 'API_TOKEN')])
 		{
