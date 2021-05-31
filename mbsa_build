@@ -25,6 +25,12 @@ node
     	}
 	stage('Check-in')
 	{
-        	echo 'Entering Check-in'	
+        	withCredentials([usernamePassword(credentialsId: 'GIT_LAB_FULL', usernameVariable: 'USERNAME', passwordVariable: 'API_TOKEN')])
+		{
+			echo 'Checking in new files'
+			sh 'git status' //this is just for debug
+
+		}
+
     	}
 }
