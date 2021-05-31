@@ -10,7 +10,7 @@ node
 			//git branch:'main' url: "https://$API_TOKEN@gitlab.com/sagecarey/test.git"
 			//sh 'git branch url:\'https://$API_TOKEN@gitlab.com/sagecarey/mbsa.git\''
 			//https://gitlab.com/ralphccarey/mbsa.git
-			def cloneCommand = 'git clone https://user:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git /var/lib/jenkins/workspace/mbsa'						
+			def cloneCommand = 'git clone https://$API_TOKEN@gitlab.com/ralphccarey/mbsa.git /var/lib/jenkins/workspace/mbsa'						
 			def pullCommand = 'git pull https://user:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git'						
 			//sh "echo $cloneCommand"
 			sh "if [ -d /var/lib/jenkins/workspace/mbsa/.git ];then  $pullCommand;else $cloneCommand;fi"
@@ -38,7 +38,7 @@ node
 			sh 'git add data2.txt'
 			sh 'git commit -m \"Added data1 and data2\"'
 			sh 'git status'
-			def pushCommand = 'git push https://user:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git'					
+			def pushCommand = 'git push https://$API_TOKEN@gitlab.com/ralphccarey/mbsa.git'					
 			println("Push Command = " + pushCommand)
 			sh pushCommand			
 		}
