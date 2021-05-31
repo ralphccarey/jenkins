@@ -34,11 +34,9 @@ node
 			sh 'git add data2.txt'
 			sh 'git commit -m \"Added data1 and data2\"'
 			sh 'git status'
-			def pushCommand = 'git push https://user:$API_TOKEN@gitlab.com/sagecarey/test.git'			
+			def pushCommand = 'git push https://user:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git'					
 			println("Push Command = " + pushCommand)
-			sh pushCommand
-			
+			sh pushCommand			
 		}
-
     	}
 }
