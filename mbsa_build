@@ -3,8 +3,7 @@ node
 { 
    	stage('Clone Repository') 
 	{        
-		sh 'sudo rm -r mbsa'
-		echo 'Getting Branches'
+		sh 'git branch -D main'
 		withCredentials([usernamePassword(credentialsId: 'GIT_LAB_FULL', usernameVariable: 'USERNAME', passwordVariable: 'API_TOKEN')])
 		{
 			//git branch:'main' url: "https://$API_TOKEN@gitlab.com/sagecarey/test.git"
