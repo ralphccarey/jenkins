@@ -13,9 +13,15 @@ node
 			sh cloneCommand
 		}
    	}
-   	stage('Pre-Build') 
-	{        
-		echo 'Entering Pre-Build'
+    	stage('Add Files')
+	{
+        	echo 'Adding Files'
+		sh "echo 'New file 1' > mbsa/data1.txt"
+		sh "echo 'var a=0' >>mbsa/data1.txt"
+		sh "echo 'var b=1' >>mbsa/data1.txt"
+		sh "echo 'New File 2' >mbsa/data2.txt"
+		sh "echo 'Color\tSize' >>mbsa/data2.txt"
+		sh "echo 'Blue\tLarge' >>mbsa/data2.txt"
     	}
 	stage('Check-in')
 	{
