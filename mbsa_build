@@ -30,7 +30,14 @@ node
 		{
 			echo 'Checking in new files'
 			sh 'git status' //this is just for debug
-
+			sh 'git add data1.txt'
+			sh 'git add data2.txt'
+			sh 'git commit -m \"Added data1 and data2\"'
+			sh 'git status'
+			def pushCommand = 'git push https://user:$API_TOKEN@gitlab.com/sagecarey/test.git'			
+			println("Push Command = " + pushCommand)
+			sh pushCommand
+			
 		}
 
     	}
