@@ -36,6 +36,7 @@ node
 		{			
 			def pushCommand = 'git push https://x:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git'					
 			echo 'Checking in new files'
+						sh pushCommand	
 			//sh 'git status' //this is just for debug
 			println("Push Command = " + pushCommand)
 			sh 'git commit -a -m \"Added data1 and data2\"'									
