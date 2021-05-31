@@ -8,7 +8,7 @@ node
 			//git branch:'main' url: "https://$API_TOKEN@gitlab.com/sagecarey/test.git"
 			//sh 'git branch url:\'https://$API_TOKEN@gitlab.com/sagecarey/mbsa.git\''
 			//https://gitlab.com/ralphccarey/mbsa.git
-			def cloneCommand = 'git clone https://user:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git /var/lib/jenkins/workspace/'			
+			def cloneCommand = 'git clone https://user:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git /var/lib/jenkins/workspace/mbsa'			
 			println("Clone Command = " + cloneCommand)
 			sh cloneCommand
 			sh 'pwd'
