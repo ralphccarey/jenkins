@@ -10,10 +10,9 @@ node
 			//git branch:'main' url: "https://$API_TOKEN@gitlab.com/sagecarey/test.git"
 			//sh 'git branch url:\'https://$API_TOKEN@gitlab.com/sagecarey/mbsa.git\''
 			//https://gitlab.com/ralphccarey/mbsa.git
-			def cloneCommand = 'git clone https://user:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git /var/lib/jenkins/workspace/mbsa'			
-			println("Clone Command = " + cloneCommand)
-			sh "echo $cloneCommand"
-			//sh "if [ -d /var/lib/jenkins/workspace/mbsa/.git ];then  echo \'found\';else cloneCommand;fi"
+			def cloneCommand = 'git clone https://user:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git /var/lib/jenkins/workspace/mbsa'						
+			//sh "echo $cloneCommand"
+			sh "if [ -d /var/lib/jenkins/workspace/mbsa/.git ];then  echo \'found\';else $cloneCommand;fi"
 			//sh cloneCommand
 			sh 'git status' //this is just for debug			
 		}
