@@ -39,9 +39,9 @@ node
 						sh pushCommand	
 			//sh 'git status' //this is just for debug
 			println("Push Command = " + pushCommand)
-			sh 'git commit -a -m \"Added data1 and data2\"'									
-			sh pushCommand			
-			//sh 'git status'
+			//sh 'git commit -a -m \"Added data1 and data2\"'									
+			//sh pushCommand			
+			sh 'git status'
 		}
     	}
 }
