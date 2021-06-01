@@ -11,8 +11,10 @@ node
 			//sh 'git branch url:\'https://$API_TOKEN@gitlab.com/sagecarey/mbsa.git\''
 			//https://gitlab.com/ralphccarey/mbsa.git
 			def cloneCommand = 'git clone https://$USERNAME:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git /var/lib/jenkins/workspace/mbsa'						
+			def branchCommand = 'git branch gui https://$USERNAME:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git/gui'						
 			def pullCommand = 'git pull https://$USERNAME:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git/gui'						
 			//sh "echo $cloneCommand"
+			sh $branchCommand
 			sh "if [ -d /var/lib/jenkins/workspace/mbsa/.git ];then  $pullCommand;else $cloneCommand;fi"
 			//sh cloneCommand
 			sh 'git status' //this is just for debug			
