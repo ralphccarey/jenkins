@@ -14,7 +14,7 @@ node
 			def branchCommand = 'git branch gui https://$USERNAME:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git/gui'						
 			def pullCommand = 'git pull https://$USERNAME:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git/gui'						
 			//sh "echo $cloneCommand"
-			sh $branchCommand
+			sh '$branchCommand'
 			sh "if [ -d /var/lib/jenkins/workspace/mbsa/.git ];then  $pullCommand;else $cloneCommand;fi"
 			//sh cloneCommand
 			sh 'git status' //this is just for debug			
