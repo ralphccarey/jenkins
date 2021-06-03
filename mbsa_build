@@ -21,10 +21,8 @@ node
 		}
    	}
 	stage('Pre-Build') 
-	{        
-        	//script
-		//{				
-			def oDataFile = readFile '/var/lib/jenkins/workspace/freestyle1/data'
+	{        	
+			def oDataFile = readFile '/var/lib/jenkins/workspace/mbsa/mbsa.js'
 			def lines = oDataFile.readLines()
 			for (line in lines)
 			{
@@ -68,11 +66,8 @@ node
 				
 				println('Old Version was ' + GLOBAL_VERSION)
 				GLOBAL_VERSION = userInputSWVersion.get('Main') + '.' + userInputSWVersion.get('Major') + '.' + userInputSWVersion.get('Minor') + '.' +  userInputSWVersion.get('Release')
-				//println('Version Info' + userInputSWVersion.['Main'])
-				//def testV = userInputSWVersion.get('Main')
 				println('New Version is ' + GLOBAL_VERSION)
-			}		
-		//}
+			}				
     	}  
     	stage('Add Files')
 	{
