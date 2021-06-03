@@ -20,6 +20,60 @@ node
 			sh 'git status' //this is just for debug			
 		}
    	}
+	stage('Pre-Build') 
+	{        
+        	script
+		{				
+			def oDataFile = readFile '/var/lib/jenkins/workspace/freestyle1/data'
+			def lines = oDataFile.readLines()
+			for (line in lines)
+			{
+				if(line=~'Version')
+				{	
+					//def regexMatch=(line=~"(\\d{1,2}\\.\\d{1,2}\\.\\d{1,2}\\.\\d{1,2})")
+					//def regexMatch=line=~"(\\d{1,2}\\.\\d{1,2}\\.\\d{1,2}\\.\\d{1,2})" //modify regex to match Version Number
+					//GLOBAL_VERSION=regexMatch[0][0]
+					def regexMatch=line=~"(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,2})" //modify regex to match Version Number
+					GLOBAL_VERSION=regexMatch[0][0]
+					GLOBAL_MAIN_VERSION=regexMatch[0][1]
+					GLOBAL_MAJOR_VERSION=regexMatch[0][2]
+					GLOBAL_MINOR_VERSION=regexMatch[0][3]
+					GLOBAL_RELEASE_VERSION=regexMatch[0][4]					
+					//GLOBAL_VERSION=GLOBAL_MAIN_VERSION + "." + GLOBAL_MAJOR_VERSION + "." + GLOBAL_MINOR_VERSION + "." + GLOBAL_RELEASE_VERSION
+					/*
+					println("Full = " + GLOBAL_VERSION)
+					println("Main = " + GLOBAL_MAIN_VERSION)
+					println("Major = " + GLOBAL_MAJOR_VERSION)
+					println("Minor = " + GLOBAL_MINOR_VERSION)
+					println("Release = " + GLOBAL_RELEASE_VERSION)*/
+					
+				}
+			}		
+        		
+			def userInput = input(
+ 			id: 'userInput', message: "Current Version is " + GLOBAL_VERSION + "  Do you wish to modify the current version?", parameters: [
+ 			choice(name:'ChangeBuild',choices:"Yes\nNo",description:"Select Yes to modify the build version")
+			])	
+			if(userInput=='Yes')
+			{
+				println("The selection was " + userInput)		
+				def userInputSWVersion = input(
+ 				id: 'userInputSWVersion', message: "Current Version is " + GLOBAL_VERSION + "  Do you wish to modify the current version?",
+				parameters: [
+				[$class: 'TextParameterDefinition', name: 'Main', defaultValue: GLOBAL_MAIN_VERSION, description: 'Main Version Number'],
+				[$class: 'TextParameterDefinition', name: 'Major', defaultValue: GLOBAL_MAJOR_VERSION, description: 'Major Version Number'],
+ 				[$class: 'TextParameterDefinition', name: 'Minor', defaultValue: GLOBAL_MINOR_VERSION, description: 'Minor Version Number'],
+				[$class: 'TextParameterDefinition', name: 'Release', defaultValue: GLOBAL_RELEASE_VERSION, description: 'Release Number']
+				])
+				
+				println('Old Version was ' + GLOBAL_VERSION)
+				GLOBAL_VERSION = userInputSWVersion.get('Main') + '.' + userInputSWVersion.get('Major') + '.' + userInputSWVersion.get('Minor') + '.' +  userInputSWVersion.get('Release')
+				//println('Version Info' + userInputSWVersion.['Main'])
+				//def testV = userInputSWVersion.get('Main')
+				println('New Version is ' + GLOBAL_VERSION)
+			}		
+		}
+    	}  
     	stage('Add Files')
 	{
         	echo 'Adding Files'
