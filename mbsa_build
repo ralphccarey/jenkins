@@ -22,8 +22,8 @@ node
    	}
 	stage('Pre-Build') 
 	{        
-        	script
-		{				
+        	//script
+		//{				
 			def oDataFile = readFile '/var/lib/jenkins/workspace/freestyle1/data'
 			def lines = oDataFile.readLines()
 			for (line in lines)
@@ -72,7 +72,7 @@ node
 				//def testV = userInputSWVersion.get('Main')
 				println('New Version is ' + GLOBAL_VERSION)
 			}		
-		}
+		//}
     	}  
     	stage('Add Files')
 	{
