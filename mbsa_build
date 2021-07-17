@@ -11,7 +11,7 @@ node
 			//sh 'git branch url:\'https://$API_TOKEN@gitlab.com/sagecarey/mbsa.git\''
 			//https://gitlab.com/ralphccarey/mbsa.git
 			def cloneCommand = 'git clone https://$USERNAME:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git /var/lib/jenkins/workspace/mbsa'						
-			def branchCommand = 'git branch gui origin/gui && git switch gui'						
+			def branchCommand = 'git branch main origin/main && git switch main'						
 			def pullCommand = 'git pull https://$USERNAME:$API_TOKEN@gitlab.com/ralphccarey/mbsa.git'						
 			//sh "echo $cloneCommand"
 			//sh "$branchCommand"
