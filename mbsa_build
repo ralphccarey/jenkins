@@ -16,7 +16,7 @@ node
 			//sh "echo $cloneCommand"
 			//sh "$branchCommand"
 			sh "if [ -d /var/lib/jenkins/workspace/mbsa/.git ];then  $pullCommand;$branchCommand;else $cloneCommand;fi"
-			sh cloneCommand
+			//sh cloneCommand
 			sh 'git status' //this is just for debug			
 		}
    	}
