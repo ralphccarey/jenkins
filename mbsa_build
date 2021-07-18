@@ -83,12 +83,7 @@ node
 			if(line=~'SUBSYSTEMVERSION')
 			{	
 				def regexMatch=line=~"(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,4})\\.(\\d{1,4})" //modify regex to match Version Number					
-				GLOBAL_VERSION=regexMatch[0][0]
-				GLOBAL_MAIN_VERSION=regexMatch[0][1]
-				GLOBAL_MAJOR_VERSION=regexMatch[0][2]
-				GLOBAL_MINOR_VERSION=regexMatch[0][3]
-				GLOBAL_RELEASE_VERSION=regexMatch[0][4]					
-				//GLOBAL_VERSION=GLOBAL_MAIN_VERSION + "." + GLOBAL_MAJOR_VERSION + "." + GLOBAL_MINOR_VERSION + "." + GLOBAL_RELEASE_VERSION
+
 				
 				println("Full = " + GLOBAL_VERSION)
 				println("Main = " + GLOBAL_MAIN_VERSION)
