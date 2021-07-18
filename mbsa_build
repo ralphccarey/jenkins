@@ -114,7 +114,7 @@ node
 			}
 		}
 		
-		def pString = GLOBAL_VERSION.substring(0,4)
+		def pString = GLOBAL_VERSION.substring(0,5)
 		println("Product Version = " + pString)
 		
 		//clean up
