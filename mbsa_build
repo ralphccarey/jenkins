@@ -107,10 +107,7 @@ node
 			}
 			else if(line=~'PRODUCTVERSION')//write subsytem version
 			{
-				if(line=~'>')
-				{
-					println("Found xml")
-				}
+
 				
 				//>00.06.*.*<
 				oVersionInfoFile.append(line + "\n")
