@@ -86,7 +86,7 @@ node
 			if(line=~'SUBSYSTEMVERSION')//write subsytem version
 			{	
 				def regexMatch=line=~"(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,4})\\.(\\d{1,4})" //modify regex to match Version Number						
-				oUpdatedDataFile.append("SUBSYSTEMVERSION\t=\"" + GLOBAL_VERSION + "\"\n")
+				oUpdatedDataFile.append("SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n")
 			}
 			else//write other information
 			{
@@ -103,7 +103,7 @@ node
 			if(cfgline=~'SUBSYSTEMVERSION')//write subsytem version
 			{	
 				def regexMatch=cfgline=~"(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,4})\\.(\\d{1,4})" //modify regex to match Version Number						
-				oVersionInfoFile.append("SUBSYSTEMVERSION\t=\"" + GLOBAL_VERSION + "\"\n")
+				oVersionInfoFile.append("SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n")
 			}
 			else if(cfgline=~'PRODUCTVERSION')//write subsytem version
 			{				
@@ -119,7 +119,7 @@ node
 				}
 				else
 				{
-					oVersionInfoFile.append("PRODUCTVERSION\t= \"" + prodVersionString + "\"\n")				
+					oVersionInfoFile.append("PRODUCTVERSION          = \"" + prodVersionString + "\"\n")				
 				}
 				
 			}
