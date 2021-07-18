@@ -106,7 +106,7 @@ node
 			}
 			else if(line=~'PRODUCTVERSION')//write subsytem version
 			{
-				if(line=~'\*')
+				if(line=~"\\d\\d")
 				{
 					println("Found xml")
 				}
