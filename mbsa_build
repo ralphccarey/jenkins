@@ -96,23 +96,23 @@ node
 		//process version_info.config
 		def oVersionInfoDataFile = readFile '/var/lib/jenkins/workspace/mbsa/version_info.config.bak'
 		def oVersionInfoFile = new File("/var/lib/jenkins/workspace/mbsa/version_info.config")
-		lines = oVersionInfoDataFile.readLines()
-		for (line in lines)
+		def configFileLines = oVersionInfoDataFile.readLines()
+		for (line in configFileLines)
 		{
 			println("Found line in info.config " + line)
-			if(line=~'SUBSYSTEMVERSION')//write subsytem version
+			if(configFileLines=~'SUBSYSTEMVERSION')//write subsytem version
 			{	
 				def regexMatch=line=~"(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,4})\\.(\\d{1,4})" //modify regex to match Version Number						
 				oVersionInfoFile.append("SUBSYSTEMVERSION\t=\"" + GLOBAL_VERSION + "\"\n")
 			}
-			else if(line=~'PRODUCTVERSION')//write subsytem version
+			/*else if(line=~'PRODUCTVERSION')//write subsytem version
 			{
 
 				
 				//>00.06.*.*<
 				oVersionInfoFile.append(line + "\n")
 				println("Product Version Found")
-			}
+			}*/
 			else//write other information
 			{
 				oVersionInfoFile.append(line + "\n")
@@ -124,7 +124,7 @@ node
 		
 		//clean up
 		sh "rm /var/lib/jenkins/workspace/mbsa/act_version_info.bak"
-		sh "rm /var/lib/jenkins/workspace/mbsa/version_info.config.bak"
+		//sh "rm /var/lib/jenkins/workspace/mbsa/version_info.config.bak"
     	}
 	stage('Check-in')
 	{
