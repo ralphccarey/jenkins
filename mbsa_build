@@ -74,27 +74,25 @@ node
 		sh "cp /var/lib/jenkins/workspace/mbsa/act_version_info.ver /var/lib/jenkins/workspace/mbsa/act_version_info.bak"
 		def oDataFile = readFile '/var/lib/jenkins/workspace/mbsa/act_version_info.bak'
 		def lines = oDataFile.readLines()
-			for (line in lines)
-			{
-				if(line=~'SUBSYSTEMVERSION')
-				{	
-
-					def regexMatch=line=~"(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,4})\\.(\\d{1,4})" //modify regex to match Version Number					
-					GLOBAL_VERSION=regexMatch[0][0]
-					GLOBAL_MAIN_VERSION=regexMatch[0][1]
-					GLOBAL_MAJOR_VERSION=regexMatch[0][2]
-					GLOBAL_MINOR_VERSION=regexMatch[0][3]
-					GLOBAL_RELEASE_VERSION=regexMatch[0][4]					
-					//GLOBAL_VERSION=GLOBAL_MAIN_VERSION + "." + GLOBAL_MAJOR_VERSION + "." + GLOBAL_MINOR_VERSION + "." + GLOBAL_RELEASE_VERSION
-					
-					println("Full = " + GLOBAL_VERSION)
-					println("Main = " + GLOBAL_MAIN_VERSION)
-					println("Major = " + GLOBAL_MAJOR_VERSION)
-					println("Minor = " + GLOBAL_MINOR_VERSION)
-					println("Release = " + GLOBAL_RELEASE_VERSION)
-					
-				}
-			}		
+		for (line in lines)
+		{
+			if(line=~'SUBSYSTEMVERSION')
+			{	
+				def regexMatch=line=~"(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,4})\\.(\\d{1,4})" //modify regex to match Version Number					
+				GLOBAL_VERSION=regexMatch[0][0]
+				GLOBAL_MAIN_VERSION=regexMatch[0][1]
+				GLOBAL_MAJOR_VERSION=regexMatch[0][2]
+				GLOBAL_MINOR_VERSION=regexMatch[0][3]
+				GLOBAL_RELEASE_VERSION=regexMatch[0][4]					
+				//GLOBAL_VERSION=GLOBAL_MAIN_VERSION + "." + GLOBAL_MAJOR_VERSION + "." + GLOBAL_MINOR_VERSION + "." + GLOBAL_RELEASE_VERSION
+				
+				println("Full = " + GLOBAL_VERSION)
+				println("Main = " + GLOBAL_MAIN_VERSION)
+				println("Major = " + GLOBAL_MAJOR_VERSION)
+				println("Minor = " + GLOBAL_MINOR_VERSION)
+				println("Release = " + GLOBAL_RELEASE_VERSION)			
+			}
+		}		
     	}
 	stage('Check-in')
 	{
