@@ -23,7 +23,7 @@ node
    	}
 	stage('Pre-Build') 
 	{        	
-			def oDataFile = readFile '/var/lib/jenkins/workspace/mbsa/mbsa.js'
+			def oDataFile = readFile '/var/lib/jenkins/workspace/mbsa/act_version_info.ver'
 			def lines = oDataFile.readLines()
 			for (line in lines)
 			{
