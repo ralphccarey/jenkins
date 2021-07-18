@@ -93,6 +93,8 @@ node
 				println("Release = " + GLOBAL_RELEASE_VERSION)			
 			}
 		}		
+		//clean up
+		sh "rm /var/lib/jenkins/workspace/mbsa/act_version_info.bak"
     	}
 	stage('Check-in')
 	{
