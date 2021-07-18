@@ -70,10 +70,12 @@ node
     	}  
     	stage('Doing Version Stuff')
 	{
-        	//make backup of version file
+        	//Need to approve script usage of java.io.File -> Manage Jenkins -> In-process Script Approval -> signature : new java.io.File java.lang.String ** write java.io.File java.lang.String
+		//Scripts not permitted to use new java.io.File java.lang.String. Administrators can decide whether to approve or reject this signature.
+		//make backup of version file
 		sh "cp /var/lib/jenkins/workspace/mbsa/act_version_info.ver /var/lib/jenkins/workspace/mbsa/act_version_info.bak"
 		def oDataFile = readFile '/var/lib/jenkins/workspace/mbsa/act_version_info.bak'
-		def oUpdatedDataFile = new File("/var/lib/jenkins/workspace/mbsa/act_version_info")
+		def oUpdatedDataFile = new File("/var/lib/jenkins/workspace/mbsa/act_version_info.ver")
 		def lines = oDataFile.readLines()
 		for (line in lines)
 		{
