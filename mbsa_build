@@ -115,8 +115,8 @@ node
 					def p1=regexMatch[0][1]
 					def p2=regexMatch[0][2]
 					def p3=regexMatch[0][3]
-					println("P1="p1 + " P3=" + p3)
-					println("P2="+p2)
+					println("P1=" +p1 + "|P3=" + p3)
+					println("P2=" +p2)
 				}
 				
 			}
