@@ -113,6 +113,7 @@ node
 				
 				//>00.06.*.*<
 				oVersionInfoFile.append(line + "\n")
+				println("Product Version Found")
 			}
 			else//write other information
 			{
