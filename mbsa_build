@@ -114,8 +114,8 @@ node
 			}
 		}
 		
-		def pString = GLOBAL_VERSION.substring(0,5)
-		println("Product Version = " + pString)
+		def prodVersionString = GLOBAL_VERSION.substring(0,5)
+		println("Product Version = " + prodVersionString)
 		
 		//clean up
 		sh "rm /var/lib/jenkins/workspace/mbsa/act_version_info.bak"
