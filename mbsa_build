@@ -96,7 +96,7 @@ node
 		//process version_info.config
 		def oVersionInfoDataFile = readFile '/var/lib/jenkins/workspace/mbsa/version_info.config.bak'
 		def oVersionInfoFile = new File("/var/lib/jenkins/workspace/mbsa/version_info.config")
-		def lines = oVersionInfoDataFile.readLines()
+		lines = oVersionInfoDataFile.readLines()
 		for (line in lines)
 		{
 			if(line=~'SUBSYSTEMVERSION')//write subsytem version
