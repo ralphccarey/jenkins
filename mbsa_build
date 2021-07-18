@@ -107,8 +107,7 @@ node
 			else if(cfgline=~'PRODUCTVERSION')//write subsytem version
 			{				
 				//>00.06.*.*<
-				oVersionInfoFile.append(cfgline + "\n")
-				println("Product Version Found")
+				oVersionInfoFile.append(cfgline + "\n")				
 				if(cfgline=~/>\d\d\.\d\d\.\*\.\*/)
 				{
 					
