@@ -99,7 +99,7 @@ node
 		lines = oVersionInfoDataFile.readLines()
 		for (line in lines)
 		{
-			println("Found line in info.config")
+			println("Found line in info.config " + line)
 			if(line=~'SUBSYSTEMVERSION')//write subsytem version
 			{	
 				def regexMatch=line=~"(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,4})\\.(\\d{1,4})" //modify regex to match Version Number						
