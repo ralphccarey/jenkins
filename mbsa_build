@@ -112,8 +112,10 @@ node
 			{
 				oVersionInfoFile.append(line + "\n")
 			}
-		}		
+		}
 		
+		def pString = GLOBAL_VERSION.substring(0,4)
+		println("Product Version = " + pString)
 		
 		//clean up
 		sh "rm /var/lib/jenkins/workspace/mbsa/act_version_info.bak"
