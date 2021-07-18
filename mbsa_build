@@ -74,6 +74,7 @@ node
 		//Scripts not permitted to use new java.io.File java.lang.String. Administrators can decide whether to approve or reject this signature.
 		//make backup of version file
 		sh "cp /var/lib/jenkins/workspace/mbsa/act_version_info.ver /var/lib/jenkins/workspace/mbsa/act_version_info.bak"
+		sh "rm /var/lib/jenkins/workspace/mbsa/act_version_info.ver"
 		def oDataFile = readFile '/var/lib/jenkins/workspace/mbsa/act_version_info.bak'
 		def oUpdatedDataFile = new File("/var/lib/jenkins/workspace/mbsa/act_version_info.ver")
 		def lines = oDataFile.readLines()
@@ -94,11 +95,11 @@ node
 				println("Major = " + GLOBAL_MAJOR_VERSION)
 				println("Minor = " + GLOBAL_MINOR_VERSION)
 				println("Release = " + GLOBAL_RELEASE_VERSION)			
-				oUpdatedDataFile.write("SUBSYSTEMVERSION\t=\"" + GLOBAL_VERSION + "\"")
+				oUpdatedDataFile.append("SUBSYSTEMVERSION\t=\"" + GLOBAL_VERSION + "\"")
 			}
 			else
 			{
-				oUpdatedDataFile.write(line)
+				oUpdatedDataFile.append(line)
 			}
 		}		
 		//clean up
