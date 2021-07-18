@@ -75,24 +75,19 @@ node
 		//make backup of version file
 		sh "cp /var/lib/jenkins/workspace/mbsa/act_version_info.ver /var/lib/jenkins/workspace/mbsa/act_version_info.bak"
 		sh "rm /var/lib/jenkins/workspace/mbsa/act_version_info.ver"
+		sh "cp /var/lib/jenkins/workspace/mbsa/version_info.config /var/lib/jenkins/workspace/mbsa/version_info.config.bak"
+		sh "rm /var/lib/jenkins/workspace/mbsa/version_info.config"
 		def oDataFile = readFile '/var/lib/jenkins/workspace/mbsa/act_version_info.bak'
 		def oUpdatedDataFile = new File("/var/lib/jenkins/workspace/mbsa/act_version_info.ver")
 		def lines = oDataFile.readLines()
 		for (line in lines)
 		{
-			if(line=~'SUBSYSTEMVERSION')
+			if(line=~'SUBSYSTEMVERSION')//write subsytem version
 			{	
-				def regexMatch=line=~"(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,4})\\.(\\d{1,4})" //modify regex to match Version Number					
-
-				
-				println("Full = " + GLOBAL_VERSION)
-				println("Main = " + GLOBAL_MAIN_VERSION)
-				println("Major = " + GLOBAL_MAJOR_VERSION)
-				println("Minor = " + GLOBAL_MINOR_VERSION)
-				println("Release = " + GLOBAL_RELEASE_VERSION)			
+				def regexMatch=line=~"(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,4})\\.(\\d{1,4})" //modify regex to match Version Number						
 				oUpdatedDataFile.append("SUBSYSTEMVERSION\t=\"" + GLOBAL_VERSION + "\"\n")
 			}
-			else
+			else//write other information
 			{
 				oUpdatedDataFile.append(line + "\n")
 			}
