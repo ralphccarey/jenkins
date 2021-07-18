@@ -95,11 +95,11 @@ node
 				println("Major = " + GLOBAL_MAJOR_VERSION)
 				println("Minor = " + GLOBAL_MINOR_VERSION)
 				println("Release = " + GLOBAL_RELEASE_VERSION)			
-				oUpdatedDataFile.append("SUBSYSTEMVERSION\t=\"" + GLOBAL_VERSION + "\"")
+				oUpdatedDataFile.append("SUBSYSTEMVERSION\t=\"" + GLOBAL_VERSION + "\"\n")
 			}
 			else
 			{
-				oUpdatedDataFile.append(line)
+				oUpdatedDataFile.append(line + "\n")
 			}
 		}		
 		//clean up
