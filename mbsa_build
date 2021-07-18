@@ -115,7 +115,7 @@ node
 					def regexMatch=cfgline=~/(.*?>)\d\d\.\d\d\.\*\.\*(<.*?)/
 					def p1=regexMatch[0][1]
 					def p2=regexMatch[0][1]
-					println(p1 + " " p2)
+					println(p1 + " " + p2)
 				}
 				
 			}
