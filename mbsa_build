@@ -104,18 +104,17 @@ node
 				def regexMatch=cfgline=~"(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,4})\\.(\\d{1,4})" //modify regex to match Version Number						
 				oVersionInfoFile.append("SUBSYSTEMVERSION\t=\"" + GLOBAL_VERSION + "\"\n")
 			}
+			else if(cfgline=~'PRODUCTVERSION')//write subsytem version
+			{				
+				//>00.06.*.*<
+				oVersionInfoFile.append(cfgline + "\n")
+				println("Product Version Found")
+			}
 			else//write other information
 			{
 				oVersionInfoFile.append(cfgline + "\n")
 			}
-			/*else if(line=~'PRODUCTVERSION')//write subsytem version
-			{
 
-				
-				//>00.06.*.*<
-				oVersionInfoFile.append(line + "\n")
-				println("Product Version Found")
-			}*/
 
 		}
 		
