@@ -109,6 +109,11 @@ node
 				//>00.06.*.*<
 				oVersionInfoFile.append(cfgline + "\n")
 				println("Product Version Found")
+				if(cfgline=~'/>\d\d\.\d\d\.\*\.\*/')
+				{
+					println("Found XML")
+				}
+				
 			}
 			else//write other information
 			{
