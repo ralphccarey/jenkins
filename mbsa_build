@@ -75,46 +75,51 @@ node
 		//make backup of version file
 		
 		def prodVersionString = GLOBAL_VERSION.substring(0,5) + ".*.*"	//conver version to string to format for ProductVersion
+		def inputFiles = ["act_version_info.ver","dog.info"] as String[]
+		def path='/var/lib/jenkins/workspace/mbsa/'
 		
-		sh "cp /var/lib/jenkins/workspace/mbsa/act_version_info.ver /var/lib/jenkins/workspace/mbsa/act_version_info.bak"
-		sh "rm /var/lib/jenkins/workspace/mbsa/act_version_info.ver"
+		for(f in inputFiles)
+		{
+			sh "cp " + path + f + " " + path + f + ".bak"
+			sh "rm /var/lib/jenkins/workspace/mbsa/act_version_info.ver"
+
+			//process act_version_info
+			def oDataFile = readFile path + f + ".bak"
+			def oUpdatedDataFile = new File(path + f)
+			def lines = oDataFile.readLines()
+			for (line in lines)
+			{
+				if(line=~'SUBSYSTEMVERSION')//write subsytem version
+				{	
+					def regexMatch=line=~"(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,4})\\.(\\d{1,4})" //modify regex to match Version Number						
+					oUpdatedDataFile.append("SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n")
+				}
+				else if(line=~'PRODUCTVERSION')//write subsytem version
+				{				
+					//>00.06.*.*<
+				
+					if(line=~/>\d\d\.\d\d\.\*\.\*/)
+					{					
+						def regexMatch=line=~/(.+?>)(\d\d\.\d\d\.\*\.\*)(\<.+)/
+						def p1=regexMatch[0][1] //XML part 1
+						def p2=regexMatch[0][2]  //existing product version string
+						def p3=regexMatch[0][3] //XML part 2
+						oUpdatedDataFile.append(p1 + prodVersionString + p3 + "\n")				
+					}
+					else
+					{
+						oUpdatedDataFile.append("PRODUCTVERSION          = \"" + prodVersionString + "\"\n")				
+					}				
+				}
+				else//write other information
+				{
+					oUpdatedDataFile.append(line + "\n")
+				}		
+			}
+		}
+		//process version_info.config		
 		sh "cp /var/lib/jenkins/workspace/mbsa/version_info.config /var/lib/jenkins/workspace/mbsa/version_info.config.bak"
 		sh "rm /var/lib/jenkins/workspace/mbsa/version_info.config"
-		//process act_version_info
-		def oDataFile = readFile '/var/lib/jenkins/workspace/mbsa/act_version_info.bak'
-		def oUpdatedDataFile = new File("/var/lib/jenkins/workspace/mbsa/act_version_info.ver")
-		def lines = oDataFile.readLines()
-		for (line in lines)
-		{
-			if(line=~'SUBSYSTEMVERSION')//write subsytem version
-			{	
-				def regexMatch=line=~"(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,4})\\.(\\d{1,4})" //modify regex to match Version Number						
-				oUpdatedDataFile.append("SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n")
-			}
-			else if(line=~'PRODUCTVERSION')//write subsytem version
-			{				
-				//>00.06.*.*<
-				
-				if(line=~/>\d\d\.\d\d\.\*\.\*/)
-				{					
-					def regexMatch=line=~/(.+?>)(\d\d\.\d\d\.\*\.\*)(\<.+)/
-					def p1=regexMatch[0][1] //XML part 1
-					def p2=regexMatch[0][2]  //existing product version string
-					def p3=regexMatch[0][3] //XML part 2
-					oUpdatedDataFile.append(p1 + prodVersionString + p3 + "\n")				
-				}
-				else
-				{
-					oUpdatedDataFile.append("PRODUCTVERSION          = \"" + prodVersionString + "\"\n")				
-				}
-				
-			}
-			else//write other information
-			{
-				oUpdatedDataFile.append(line + "\n")
-			}
-		}		
-		//process version_info.config		
 		def oVersionInfoDataFile = readFile '/var/lib/jenkins/workspace/mbsa/version_info.config.bak'
 		def oVersionInfoFile = new File("/var/lib/jenkins/workspace/mbsa/version_info.config")
 		def configFileLines = oVersionInfoDataFile.readLines()
