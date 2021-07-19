@@ -116,6 +116,8 @@ node
 					oUpdatedDataFile.append(line + "\n")
 				}		
 			}
+			//clean-up
+			sh "rm " + path + f + ".bak"
 		}
 		//process version_info.config		
 		sh "cp /var/lib/jenkins/workspace/mbsa/version_info.config /var/lib/jenkins/workspace/mbsa/version_info.config.bak"
@@ -158,8 +160,7 @@ node
 		
 
 		
-		//clean up
-		sh "rm /var/lib/jenkins/workspace/mbsa/act_version_info.bak"
+		//clean up		
 		sh "rm /var/lib/jenkins/workspace/mbsa/version_info.config.bak"
     	}
 	stage('Check-in')
