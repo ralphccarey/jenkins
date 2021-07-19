@@ -70,7 +70,7 @@ node
     	}  
     	stage('Doing Version Stuff')
 	{
-        	def newFileTest = new File("/var/lib/jenkins/workspace/mbs/test.txt")
+        	def newFileTest = new File("/var/lib/jenkins/workspace/mbsa/text/test.txt")
 		newFileTest.append(GLOBAL_VERSION + "\n")
 		
 		//Need to approve script usage of java.io.File -> Manage Jenkins -> In-process Script Approval -> signature : new java.io.File java.lang.String and signature : append java.io.File java.lang.Object
