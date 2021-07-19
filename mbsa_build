@@ -81,7 +81,7 @@ node
 		for(f in inputFiles)
 		{
 			sh "cp " + path + f + " " + path + f + ".bak"
-			sh "rm /var/lib/jenkins/workspace/mbsa/act_version_info.ver"
+			sh "rm " + path + f
 
 			//process act_version_info
 			def oDataFile = readFile path + f + ".bak"
