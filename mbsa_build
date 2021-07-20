@@ -202,7 +202,7 @@ def getVersion(text)
 	def p1=regexMatch[0][1] //XML part 1
 	def p2=regexMatch[0][2]  //existing product version string
 	def p3=regexMatch[0][3] //XML part 2
-	retukrn p1 + prodVersionString + p3 + "\n"
+	return p1 + prodVersionString + p3 + "\n"
 }
 
 
