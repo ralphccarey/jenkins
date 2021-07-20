@@ -98,7 +98,7 @@ node
 					//oUpdatedDataFile.append("SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n")
 					outputString="SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n"
 					sh "echo \"SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n >>" + path +f
-					
+					regexMatch = null					
 				}
 				else if(line=~'PRODUCTVERSION')//write subsytem version
 				{				
@@ -113,6 +113,7 @@ node
 						//oUpdatedDataFile.append(p1 + prodVersionString + p3 + "\n")				
 						outputString = p1 + prodVersionString + p3 + "\n"
 						sh "echo " + p1 + prodVersionString + p3 + "\n >>" + path +f
+						regexMatch = null
 					}
 					else
 					{
