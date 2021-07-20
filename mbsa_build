@@ -96,8 +96,8 @@ node
 				{	
 					//def regexMatch=line=~"(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,4})\\.(\\d{1,4})" //modify regex to match Version Number						
 					//oUpdatedDataFile.append("SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n")
-					//outputString="SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n"
-					sh "echo \"SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n >>" + path +f
+					outputString="SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n"
+					//sh "echo \"SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n >>" + path +f
 					
 				}
 				else if(line=~'PRODUCTVERSION')//write subsytem version
