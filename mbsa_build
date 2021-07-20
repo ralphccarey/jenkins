@@ -92,7 +92,8 @@ node
 			def lines = oDataFile.readLines()
 			for (line in lines)
 			{
-				def outputString=""
+				
+				def outputString
 				if(line=~'SUBSYSTEMVERSION')//write subsytem version
 				{	
 					def regexMatch=line=~"(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,4})\\.(\\d{1,4})" //modify regex to match Version Number						
