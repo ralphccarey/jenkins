@@ -1,6 +1,12 @@
 
 node 
 { 
+	def GLOBAL_VERSION
+	def GLOBAL_MAIN_VERSION
+	def GLOBAL_MAJOR_VERSION
+	def GLOBAL_MINOR_VERSION
+	def GLOBAL_RELEASE_VERSION
+	
 	stage('Clone Repository') 
 	{        		
 
