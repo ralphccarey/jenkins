@@ -97,6 +97,7 @@ node
 					def regexMatch=line=~"(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,4})\\.(\\d{1,4})" //modify regex to match Version Number						
 					//oUpdatedDataFile.append("SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n")
 					outputString="SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n"
+					sh "echo \"SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n >>" + path +f
 					
 				}
 				else if(line=~'PRODUCTVERSION')//write subsytem version
@@ -111,19 +112,22 @@ node
 						def p3=regexMatch[0][3] //XML part 2
 						//oUpdatedDataFile.append(p1 + prodVersionString + p3 + "\n")				
 						outputString = p1 + prodVersionString + p3 + "\n"
+						sh "echo " + p1 + prodVersionString + p3 + "\n >>" + path +f
 					}
 					else
 					{
 						//oUpdatedDataFile.append("PRODUCTVERSION          = \"" + prodVersionString + "\"\n")				
-						outputString = "PRODUCTVERSION          = \"" + prodVersionString + "\"\n"
+						//outputString = "PRODUCTVERSION          = \"" + prodVersionString + "\"\n"
+						sh "echo \"PRODUCTVERSION          = \"" + prodVersionString + "\"\n >>" + path + f
 					}				
 				}
 				else//write other information
 				{
 					//oUpdatedDataFile.append(line + "\n")
-					outputString = line + "\n"
+					//outputString = line + "\n"
+					sh "echo " + line + "\n >>"+ path + f
 				}		
-				oUpdatedDataFile.append(outputString)
+				//oUpdatedDataFile.append(outputString)
 			}
 			
 			//clean-up
