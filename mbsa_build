@@ -92,10 +92,13 @@ node
 			def lines = oDataFile.readLines()
 			for (line in lines)
 			{
+				def outputString=""
 				if(line=~'SUBSYSTEMVERSION')//write subsytem version
 				{	
 					def regexMatch=line=~"(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,4})\\.(\\d{1,4})" //modify regex to match Version Number						
-					oUpdatedDataFile.append("SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n")
+					//oUpdatedDataFile.append("SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n")
+					outputString="SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n"
+					
 				}
 				else if(line=~'PRODUCTVERSION')//write subsytem version
 				{				
@@ -107,18 +110,22 @@ node
 						def p1=regexMatch[0][1] //XML part 1
 						def p2=regexMatch[0][2]  //existing product version string
 						def p3=regexMatch[0][3] //XML part 2
-						oUpdatedDataFile.append(p1 + prodVersionString + p3 + "\n")				
+						//oUpdatedDataFile.append(p1 + prodVersionString + p3 + "\n")				
+						outputString = p1 + prodVersionString + p3 + "\n"
 					}
 					else
 					{
-						oUpdatedDataFile.append("PRODUCTVERSION          = \"" + prodVersionString + "\"\n")				
+						//oUpdatedDataFile.append("PRODUCTVERSION          = \"" + prodVersionString + "\"\n")				
+						outputString = "PRODUCTVERSION          = \"" + prodVersionString + "\"\n"
 					}				
 				}
 				else//write other information
 				{
-					oUpdatedDataFile.append(line + "\n")
+					//oUpdatedDataFile.append(line + "\n")
+					outputString = line + "\n"
 				}		
 			}
+			oUpdatedDataFile.append(outputString)
 			//clean-up
 			sh "rm " + path + f + ".bak"
 		}
