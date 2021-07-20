@@ -123,8 +123,9 @@ node
 					//oUpdatedDataFile.append(line + "\n")
 					outputString = line + "\n"
 				}		
+				oUpdatedDataFile.append(outputString)
 			}
-			oUpdatedDataFile.append(outputString)
+			
 			//clean-up
 			sh "rm " + path + f + ".bak"
 		}
