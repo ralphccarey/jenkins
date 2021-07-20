@@ -97,7 +97,7 @@ node
 					//def regexMatch=line=~"(\\d{1,2})\\.(\\d{1,2})\\.(\\d{1,4})\\.(\\d{1,4})" //modify regex to match Version Number						
 					//oUpdatedDataFile.append("SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n")
 					outputString="SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n"
-					//sh "echo \"SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\"\n >>" + path +f
+					sh "echo \"SUBSYSTEMVERSION        =\"" + GLOBAL_VERSION + "\" >> " + path +f
 					
 				}
 				else if(line=~'PRODUCTVERSION')//write subsytem version
@@ -115,20 +115,20 @@ node
 						//sh "echo " + p1 + prodVersionString + p3 + "\n >>" + path +f
 						println("Going to try function")
 						def pv=getVersion(line,prodVersionString)
-						sh "echo " + pv + " >>" + path +f
+						sh "echo " + pv + " >> " + path +f
 					}
 					else
 					{
 						//oUpdatedDataFile.append("PRODUCTVERSION          = \"" + prodVersionString + "\"\n")				
 						//outputString = "PRODUCTVERSION          = \"" + prodVersionString + "\"\n"
-						sh "echo \"PRODUCTVERSION          = \"" + prodVersionString + "\"\n >>" + path + f
+						sh "echo \"PRODUCTVERSION          = \"" + prodVersionString + "\" >> " + path + f
 					}				
 				}
 				else//write other information
 				{
 					//oUpdatedDataFile.append(line + "\n")
 					//outputString = line + "\n"
-					sh "echo " + line + "\n >>"+ path + f
+					sh "echo " + line + " >> "+ path + f
 				}		
 				//oUpdatedDataFile.append(outputString)
 			}
