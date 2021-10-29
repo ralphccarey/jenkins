@@ -77,7 +77,7 @@ node
     	}  
     	stage('Doing Version Stuff')
 	{
-		
+		/*
 		//Need to approve script usage of java.io.File -> Manage Jenkins -> In-process Script Approval -> signature : new java.io.File java.lang.String and signature : append java.io.File java.lang.Object
 		//Scripts not permitted to use new java.io.File java.lang.String. Administrators can decide whether to approve or reject this signature.
 		//make backup of version file
@@ -196,6 +196,7 @@ node
 		
 		//clean up		
 		sh "rm /var/lib/jenkins/workspace/mbsa/version_info.config.bak"
+		*/
     	}
 	stage('Check-in')
 	{
