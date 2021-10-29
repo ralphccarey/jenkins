@@ -143,7 +143,9 @@ node
 			}
 			
 			//clean-up
+			sh "echo clean up"
 			sh "rm " + path + f + ".bak"
+			sh "echo clean up finished"
 		}
 		//process version_info.config		
 		sh "cp /var/lib/jenkins/workspace/mbsa/version_info.config /var/lib/jenkins/workspace/mbsa/version_info.config.bak"
