@@ -89,7 +89,9 @@ node
 		sh "echo pre file check"
 		for(f in inputFiles)
 		{
+			sh "echo cp" + path + f + " " + path + f + ".bak"
 			sh "cp " + path + f + " " + path + f + ".bak"
+			sh "echo rm " + path + f
 			sh "rm " + path + f
 
 			//process act_version_info
