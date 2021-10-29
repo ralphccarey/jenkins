@@ -86,6 +86,7 @@ node
 		def inputFiles = ["act_version_info.ver","dog.info"] as String[]
 		def path='/var/lib/jenkins/workspace/mbsa/'
 		
+		sh "echo pre file check"
 		for(f in inputFiles)
 		{
 			sh "cp " + path + f + " " + path + f + ".bak"
@@ -124,12 +125,14 @@ node
 						//sh "echo " + p1 + prodVersionString + p3 + "\n >>" + path +f
 						println("Going to try function")
 						def pv=getVersion(line,prodVersionString)
+						sh "echo prodversion ifno"
 						sh "echo " + pv + " >> " + path +f
 					}
 					else
 					{
 						//oUpdatedDataFile.append("PRODUCTVERSION          = \"" + prodVersionString + "\"\n")				
 						//outputString = "PRODUCTVERSION          = \"" + prodVersionString + "\"\n"
+						sh "echo other prod version info else"
 						sh "echo \"PRODUCTVERSION          = \"" + prodVersionString + "\" >> " + path + f
 					}				
 				}
@@ -137,6 +140,7 @@ node
 				{
 					//oUpdatedDataFile.append(line + "\n")
 					//outputString = line + "\n"
+					sh "echo other info"
 					sh "echo " + line + " >> "+ path + f
 				}		
 				//oUpdatedDataFile.append(outputString)
